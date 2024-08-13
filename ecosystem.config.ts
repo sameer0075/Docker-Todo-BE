@@ -4,7 +4,7 @@ module.exports = {
         name: 'docker-compose',
         script: 'docker-compose',
         args: 'up',
-        interpreter: '/usr/bin/sh',
+        interpreter: '/bin/sh', // Ensure this is a valid shell interpreter
         interpreter_args: '-c',
         autorestart: true,
         watch: false,
