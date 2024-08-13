@@ -19,7 +19,7 @@ jobs:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
     - name: Copy files via scp
-      run: scp -o StrictHostKeyChecking=no -r . ec2-user@35.173.221.28:/your-app-directory
+      run: scp -o StrictHostKeyChecking=no -r . ec2-user@35.173.221.28:/Docker-Todo-BE
 
     - name: Connect and deploy
       run: ssh -o StrictHostKeyChecking=no ec2-user@35.173.221.28 "
