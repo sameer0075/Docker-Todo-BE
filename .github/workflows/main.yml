@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - 'main'
+      - main
 
 jobs:
   deploy:
@@ -14,15 +14,16 @@ jobs:
 
     steps:
     - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up SSH and deploy
       uses: appleboy/ssh-action@master
       with:
-      host: ec2-35-173-221-28.compute-1.amazonaws.com
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
-    - name: Connect and deploy
-      run: ssh -o StrictHostKeyChecking=no ec2-user@35.173.221.28 "
-            cd ~/Docker-Todo-BE &&
-            docker-compose down &&
-            docker-compose up -d
-        "
+        host: ec2-35-173-221-28.compute-1.amazonaws.com
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
+          cd ~/Docker-Todo-BE &&
+          docker-compose down &&
+          docker-compose up -d
