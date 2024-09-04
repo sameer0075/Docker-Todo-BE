@@ -12,7 +12,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     dotenv.config();
     return {
       type: 'postgres',
-      url: process.env.DATABASE_URL,
+      url: "postgres://postgres:Superman1234@database-1.c7g8c84kuof9.us-east-1.rds.amazonaws.com:5432/todo-app",
       entities: ['dist/**/*.entity{.js,.ts}'],
       synchronize: false,
       migrations: ['database/*.{ts,js}'],
